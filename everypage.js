@@ -15,11 +15,9 @@ if (!callbackForPTTPress) {
 
       if ((value.key || value.button) === pttKey && !keyIsDown) {
         keyIsDown = true;
-        chrome.tabs.query({ url: "*://teams.microsoft.com/*" }, (tabs) => {
-          const foundTab = tabs[0];
-          if (foundTab) {
-            chrome.tabs.sendMessage(tabs[0].id, { action: "pressPTTButton" });
-          }
+        chrome.runtime.sendMessage({
+          from: "everyPageScript",
+          type: "pressPTTButton",
         });
       }
     }
@@ -39,11 +37,9 @@ if (!callbackForPTTRelease) {
 
       if ((value.key || value.button) === pttKey && keyIsDown) {
         keyIsDown = false;
-        chrome.tabs.query({ url: "*://teams.microsoft.com/*" }, (tabs) => {
-          const foundTab = tabs[0];
-          if (foundTab) {
-            chrome.tabs.sendMessage(tabs[0].id, { action: "releasePTTButton" });
-          }
+        chrome.runtime.sendMessage({
+          from: "everyPageScript",
+          type: "releasePTTButton",
         });
       }
     }

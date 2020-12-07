@@ -14,3 +14,24 @@ chrome.runtime.onInstalled.addListener(function () {
     ]);
   });
 });
+
+chrome.runtime.onMessage.addListener(function (message) {
+  if (message.from == "everyPageScript") {
+    chrome.tabs.query({ url: "*://teams.microsoft.com/*" }, (tabs) => {
+      const foundTab = tabs[0];
+      if (foundTab) {
+        if (message.type === "pressPTTButton") {
+          chrome.tabs.sendMessage(tabs[0].id, {
+            from: "backgroundScript",
+            type: message.type,
+          });
+        } else if (message.type === "releasePTTButton") {
+          chrome.tabs.sendMessage(tabs[0].id, {
+            from: "backgroundScript",
+            type: message.type,
+          });
+        }
+      }
+    });
+  }
+});
