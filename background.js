@@ -21,12 +21,12 @@ chrome.runtime.onMessage.addListener(function (message) {
       const foundTab = tabs[0];
       if (foundTab) {
         if (message.type === "pressPTTButton") {
-          chrome.tabs.sendMessage(tabs[0].id, {
+          chrome.tabs.sendMessage(foundTab.id, {
             from: "backgroundScript",
             type: message.type,
           });
         } else if (message.type === "releasePTTButton") {
-          chrome.tabs.sendMessage(tabs[0].id, {
+          chrome.tabs.sendMessage(foundTab.id, {
             from: "backgroundScript",
             type: message.type,
           });

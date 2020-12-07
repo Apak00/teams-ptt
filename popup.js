@@ -1,5 +1,3 @@
-console.log("LOADED POPUP SCRIPT");
-
 const pttKeyInput = document.getElementById("ptt-key");
 const releaseDelayInput = document.getElementById("relase-delay");
 
