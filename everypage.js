@@ -1,5 +1,3 @@
-console.log("LOADED EVERYPAGE SCRIPT");
-
 let pttKey;
 let releaseDelay = 300;
 let callbackForPTTPress;

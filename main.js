@@ -1,5 +1,3 @@
-console.log("LOADEDED CONTENT SCRIPT");
-
 chrome.runtime.onMessage.addListener((message) => {
   let micButton = document.getElementById("microphone-button");
   if (!!micButton) {
