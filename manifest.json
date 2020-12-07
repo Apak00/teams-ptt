@@ -1,6 +1,6 @@
 {
   "name": "Teams Shame",
-  "version": "0.1",
+  "version": "0.2",
   "description": "PTT for Teams",
   "manifest_version": 2,
   "permissions": ["tabs", "declarativeContent", "storage"],
